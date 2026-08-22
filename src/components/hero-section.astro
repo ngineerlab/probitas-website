@@ -1,0 +1,60 @@
+---
+import { RiArrowRightLine } from '@remixicon/react';
+import { Button } from '@/components/ui/button';
+import { site } from '@/lib/site-data';
+---
+
+<section id="home" class="relative isolate overflow-hidden bg-navy">
+  <img
+    src="/images/hero.png"
+    alt={`Studenten en professionals van ${site.name} aan het werk`}
+    class="absolute inset-0 size-full object-cover opacity-70"
+  >
+  <div
+    class="absolute inset-0 bg-linear-to-r from-navy via-navy/85 to-navy/40"
+  ></div>
+  <div
+    class="absolute inset-0 bg-linear-to-t from-navy via-transparent to-transparent"
+  ></div>
+
+  <div
+    class="relative mx-auto flex min-h-160 max-w-7xl flex-col justify-center px-6 py-28"
+  >
+    <div class="max-w-2xl">
+      <h1
+        class="font-heading text-5xl leading-[1.05] font-bold text-white sm:text-6xl lg:text-7xl"
+      >
+        Innovatie Begint
+        <br>
+        Bij Mensen
+      </h1>
+
+      <p class="mt-6 max-w-lg text-base text-white/75 sm:text-lg">
+        {`${site.name} ontwikkelt, verbindt en ondersteunt innovatieve projecten op het gebied van onderwijs, technologie en duurzame ontwikkeling samen met partners die impact maken.`}
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-4">
+        <Button size="lg" className="rounded-full px-6" client:load>
+          Ontdek onze projecten
+          <RiArrowRightLine />
+        </Button>
+        <Button
+          size="lg"
+          variant="outline"
+          className="rounded-full border-white/40 bg-transparent px-6 text-white hover:bg-white/10 hover:text-white"
+          client:load
+        >
+          Word Partner
+        </Button>
+      </div>
+    </div>
+
+    <p
+      class="mt-0 hidden max-w-xs self-end font-heading text-xl text-white/85 italic sm:block"
+    >
+      Jezelf ontwikkelen,
+      <br>
+      elkaar verrijken.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+---
+import {
+  RiBookOpenLine,
+  RiGraduationCapLine,
+  RiHandHeartLine,
+  RiLeafLine,
+} from '@remixicon/react';
+import { Button } from '@/components/ui/button';
+import { accentSoftBg, accentText } from '@/lib/accent';
+import { stats } from '@/lib/site-data';
+
+const icons = {
+  RiGraduationCapLine,
+  RiBookOpenLine,
+  RiHandHeartLine,
+  RiLeafLine,
+} as const;
+---
+
+<section id="impact" class="bg-accent/70 py-20">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-12 text-center">
+      <h2
+        class="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
+      >
+        Onze impact
+      </h2>
+      <div class="mx-auto mt-3 h-1 w-14 rounded-full bg-primary"></div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-8 sm:grid-cols-4">
+      {stats.map((stat) => {
+          const Icon = icons[stat.icon as keyof typeof icons];
+          return (
+            <div class="flex flex-col items-center gap-3 text-center">
+              <div class={`flex size-14 items-center justify-center rounded-2xl ${accentSoftBg[stat.accent]}`}>
+                <Icon className={`size-7 ${accentText[stat.accent]}`} />
+              </div>
+              <div class="font-heading text-4xl font-bold text-foreground">{stat.value}</div>
+              <div class="text-sm text-muted-foreground">{stat.label}</div>
+            </div>
+          );
+        })}
+    </div>
+
+    <div class="mt-12 flex justify-center">
+      <Button size="lg" className="rounded-full px-8" client:load>
+        Bekijk alle impact
+      </Button>
+    </div>
+  </div>
+</section>
