@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stichting Probitas — Coming Soon</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+    @theme {
+      --color-probitas-purple: #3b0a45;
+      --color-probitas-magenta: #c2185b;
+      --color-probitas-red: #e30613;
+      --color-probitas-orange: #f7931e;
+      --color-probitas-yellow: #ffd400;
+      --color-probitas-green: #39b54a;
+      --color-probitas-teal: #0f5c3f;
+      --color-probitas-blue: #1a2f6b;
+      --font-display: "Georgia", "Times New Roman", serif;
+    }
+
+    @keyframes drift-a {
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(60px, 40px) scale(1.1);
+      }
+    }
+    @keyframes drift-b {
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(-50px, 60px) scale(1.05);
+      }
+    }
+    @keyframes drift-c {
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(40px, -50px) scale(1.1);
+      }
+    }
+    @keyframes drift-d {
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(-60px, -40px) scale(1.05);
+      }
+    }
+    </style>
+  </head>
+  <body
+    class="min-h-screen bg-white text-probitas-purple antialiased overflow-x-hidden"
+  >
+    <!-- Ambient color glow, echoing the logo's rainbow bloom -->
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div
+        class="absolute -top-32 -left-24 h-96 w-96 rounded-full bg-probitas-blue/20 blur-3xl"
+        style="animation: drift-a 26s ease-in-out infinite;"
+      ></div>
+      <div
+        class="absolute -top-40 left-1/3 h-96 w-96 rounded-full bg-probitas-purple/20 blur-3xl"
+        style="animation: drift-b 32s ease-in-out infinite;"
+      ></div>
+      <div
+        class="absolute -top-24 right-0 h-96 w-96 rounded-full bg-probitas-magenta/20 blur-3xl"
+        style="animation: drift-c 29s ease-in-out infinite;"
+      ></div>
+      <div
+        class="absolute top-1/2 -right-28 h-96 w-96 rounded-full bg-probitas-red/20 blur-3xl"
+        style="animation: drift-d 35s ease-in-out infinite;"
+      ></div>
+      <div
+        class="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-probitas-orange/20 blur-3xl"
+        style="animation: drift-a 31s ease-in-out infinite;"
+      ></div>
+      <div
+        class="absolute -bottom-24 left-1/4 h-96 w-96 rounded-full bg-probitas-yellow/20 blur-3xl"
+        style="animation: drift-b 27s ease-in-out infinite;"
+      ></div>
+      <div
+        class="absolute bottom-10 -left-24 h-96 w-96 rounded-full bg-probitas-green/20 blur-3xl"
+        style="animation: drift-c 33s ease-in-out infinite;"
+      ></div>
+      <div
+        class="absolute top-1/3 -left-32 h-96 w-96 rounded-full bg-probitas-teal/20 blur-3xl"
+        style="animation: drift-d 30s ease-in-out infinite;"
+      ></div>
+    </div>
+
+    <main
+      class="flex min-h-screen flex-col items-center justify-center px-6 py-16 text-center"
+    >
+      <img
+        src="logo.png"
+        alt="Stichting Probitas"
+        class="w-full max-w-xs sm:max-w-sm md:max-w-md mb-10 drop-shadow-sm"
+      >
+
+      <p
+        class="uppercase tracking-[0.35em] text-xs sm:text-sm font-semibold text-probitas-magenta mb-4"
+      >
+        Something meaningful is on its way
+      </p>
+
+      <h1
+        class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-probitas-purple mb-6"
+      >
+        Coming&nbsp;Soon
+      </h1>
+
+      <p class="text-sm sm:text-base font-medium tracking-wide mb-8">
+        <span class="text-probitas-blue">Technology</span>
+        <span class="text-probitas-purple/40">&bull;</span>
+        <span class="text-probitas-magenta">Education</span>
+        <span class="text-probitas-purple/40">&bull;</span>
+        <span class="text-probitas-green">Agriculture</span>
+        <span class="text-probitas-purple/40">&bull;</span>
+        <span class="text-probitas-orange">Impact</span>
+      </p>
+
+      <p
+        class="max-w-xl text-base sm:text-lg text-probitas-purple/70 leading-relaxed mb-10"
+      >
+        We're building our new home online, rooted in the belief that when
+        people grow themselves, they lift up everyone around them. We're putting
+        the finishing touches in place and can't wait to share it with you.
+      </p>
+
+      <div
+        class="h-1 w-40 rounded-full bg-[linear-gradient(to_right,#377e3f_0%,#377e3f_20%,#ffffff_20%,#ffffff_30%,#b40a2d_30%,#b40a2d_70%,#ffffff_70%,#ffffff_80%,#377e3f_80%,#377e3f_100%)] mb-10"
+      ></div>
+
+      <a
+        href="mailto:info@probitas.sr"
+        class="inline-flex items-center gap-2 rounded-full border border-probitas-purple/20 bg-probitas-purple/5 px-6 py-3 text-sm font-medium text-probitas-purple transition-colors hover:bg-probitas-purple hover:text-white"
+      >
+        Get in touch
+      </a>
+    </main>
+
+    <footer class="pb-8 text-center text-xs text-probitas-purple/40">
+      &copy; <span id="year"></span> Stichting Probitas. All rights reserved.
+    </footer>
+
+    <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
