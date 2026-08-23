@@ -1,0 +1,127 @@
+---
+import { RiArrowRightLine, RiTeamLine } from '@remixicon/react';
+import PageHero from '@/components/layout/page-hero.astro';
+import SiteFooter from '@/components/layout/site-footer.astro';
+import SiteHeader from '@/components/layout/site-header.astro';
+import { buttonVariants } from '@/components/ui/button';
+import Layout from '@/layouts/main.astro';
+import { accentText } from '@/lib/accent';
+import { programIcons } from '@/lib/program-icons';
+import { pillars, programDetails, site } from '@/lib/site-data';
+import { cn } from '@/lib/utils';
+---
+
+<Layout title={`Over ons | ${site.name}`} description={site.positioning}>
+  <SiteHeader />
+  <main>
+    <PageHero
+      eyebrow="Over ons"
+      title="Over Stichting Probitas"
+      description="De centrale organisatie die innovatie in Suriname verbindt, ondersteunt en mogelijk maakt."
+    />
+
+    <section class="mx-auto max-w-4xl px-6 py-20">
+      <h2
+        class="text-center font-heading text-sm font-semibold tracking-wide text-primary uppercase"
+      >
+        Missie &amp; Visie
+      </h2>
+      <blockquote
+        class="mt-6 text-center font-heading text-2xl font-semibold text-foreground sm:text-3xl"
+      >
+        {site.positioning}
+      </blockquote>
+    </section>
+
+    <section class="bg-secondary py-20">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <span
+          class="mx-auto flex size-14 items-center justify-center rounded-2xl bg-primary/10"
+        >
+          <RiTeamLine className="size-7 text-primary" />
+        </span>
+        <h2
+          class="mt-5 font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
+        >
+          Bestuur
+        </h2>
+        <p class="mx-auto mt-3 max-w-xl text-muted-foreground">
+          Bestuursinformatie volgt binnenkort.
+        </p>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-6xl px-6 py-20">
+      <div class="mb-12 text-center">
+        <h2
+          class="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
+        >
+          Samenwerking
+        </h2>
+        <p class="mx-auto mt-3 max-w-2xl text-muted-foreground">
+          Stichting Probitas is de centrale organisatie: de hub. We ontwikkelen,
+          verbinden en ondersteunen. InnovED, World Smart College, ITLearn,
+          Probi-Kas, STEM &amp; Innovatie en toekomstige initiatieven zijn de
+          gespecialiseerde programma&rsquo;s en partners: de spokes die de
+          uitvoering verzorgen.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-6 sm:grid-cols-4">
+        {pillars.map((pillar) => (
+            <div class="flex flex-col items-center gap-2 text-center">
+              <span class={cn('font-heading text-lg font-bold', accentText[pillar.accent])}>
+                {pillar.label}
+              </span>
+            </div>
+          ))}
+      </div>
+    </section>
+
+    <section class="bg-secondary py-20">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="mb-12 text-center">
+          <h2
+            class="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
+          >
+            Partners
+          </h2>
+          <p class="mx-auto mt-3 max-w-2xl text-muted-foreground">
+            Vijf gespecialiseerde programma&rsquo;s, elk met een eigen focus
+            binnen het netwerk van Probitas.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+          {programDetails.map((program) => {
+              const Icon = programIcons[program.icon];
+              return (
+                <a
+                  href={`/programs/${program.slug}`}
+                  title={program.title}
+                  aria-label={program.title}
+                  class="group flex aspect-square flex-col items-center justify-center gap-3 rounded-xl border border-border bg-background p-5 transition-colors hover:border-foreground/20 hover:bg-muted"
+                >
+                  <Icon className="size-9 text-muted-foreground transition-colors group-hover:text-foreground" />
+                  <span class="text-center text-xs font-medium text-muted-foreground group-hover:text-foreground">
+                    {program.title}
+                  </span>
+                </a>
+              );
+            })}
+        </div>
+
+        <div class="mt-10 text-center">
+          <a
+            href="/partners"
+            class={cn(buttonVariants({ variant: 'default', size: 'lg' }), 'gap-1.5 rounded-full px-8')}
+          >
+            Bekijk al onze partners
+            <RiArrowRightLine />
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Layout>

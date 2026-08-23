@@ -1,13 +1,15 @@
 ---
 import {
+  RiArrowRightLine,
   RiBookOpenLine,
   RiGraduationCapLine,
   RiHandHeartLine,
   RiLeafLine,
 } from '@remixicon/react';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { accentSoftBg, accentText } from '@/lib/accent';
 import { stats } from '@/lib/site-data';
+import { cn } from '@/lib/utils';
 
 const icons = {
   RiGraduationCapLine,
@@ -33,8 +35,8 @@ const icons = {
           const Icon = icons[stat.icon as keyof typeof icons];
           return (
             <div class="flex flex-col items-center gap-3 text-center">
-              <div class={`flex size-14 items-center justify-center rounded-2xl ${accentSoftBg[stat.accent]}`}>
-                <Icon className={`size-7 ${accentText[stat.accent]}`} />
+              <div class={cn('flex size-14 items-center justify-center rounded-2xl', accentSoftBg[stat.accent])}>
+                <Icon className={cn('size-7', accentText[stat.accent])} />
               </div>
               <div class="font-heading text-4xl font-bold text-foreground">{stat.value}</div>
               <div class="text-sm text-muted-foreground">{stat.label}</div>
@@ -44,9 +46,13 @@ const icons = {
     </div>
 
     <div class="mt-12 flex justify-center">
-      <Button size="lg" className="rounded-full px-8" client:load>
+      <a
+        href="/projects"
+        class={cn(buttonVariants({ size: 'lg' }), 'gap-1.5 rounded-full px-8')}
+      >
         Bekijk alle impact
-      </Button>
+        <RiArrowRightLine />
+      </a>
     </div>
   </div>
 </section>

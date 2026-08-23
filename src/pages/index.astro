@@ -1,10 +1,11 @@
 ---
-import HeroSection from '@/components/hero-section.astro';
-import ImpactSection from '@/components/impact-section.astro';
-import NewsSection from '@/components/news-section.astro';
-import ProgramsSection from '@/components/programs-section.astro';
-import SiteFooter from '@/components/site-footer.astro';
-import SiteHeader from '@/components/site-header.astro';
+import AboutSection from '@/components/home/about-section.astro';
+import HeroSection from '@/components/home/hero-section.astro';
+import ImpactSection from '@/components/home/impact-section.astro';
+import NewsSection from '@/components/home/news-section.astro';
+import ProgramsSection from '@/components/home/programs-section.astro';
+import SiteFooter from '@/components/layout/site-footer.astro';
+import SiteHeader from '@/components/layout/site-header.astro';
 import Layout from '@/layouts/main.astro';
 ---
 
@@ -12,6 +13,7 @@ import Layout from '@/layouts/main.astro';
   <SiteHeader />
   <main>
     <HeroSection />
+    <AboutSection />
     <ProgramsSection />
     <ImpactSection />
     <NewsSection />

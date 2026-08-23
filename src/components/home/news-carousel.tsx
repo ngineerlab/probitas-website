@@ -18,6 +18,7 @@ import {
 } from '@/components/ui/carousel';
 import { accentBg } from '@/lib/accent';
 import { news } from '@/lib/site-data';
+import { cn } from '@/lib/utils';
 
 export function NewsCarousel() {
   return (
@@ -36,7 +37,10 @@ export function NewsCarousel() {
                   className="size-full object-cover"
                 />
                 <Badge
-                  className={`absolute top-3 left-3 rounded-full border-0 uppercase ${accentBg[item.accent]} text-white`}
+                  className={cn(
+                    'absolute top-3 left-3 rounded-full border-0 uppercase text-white',
+                    accentBg[item.accent],
+                  )}
                 >
                   {item.category}
                 </Badge>

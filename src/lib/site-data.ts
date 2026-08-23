@@ -4,6 +4,8 @@ export const site = {
   tagline: 'Innovatie begint bij mensen',
   description:
     'Stichting Probitas ontwikkelt, verbindt en ondersteunt innovatieve projecten op het gebied van onderwijs, technologie en duurzame ontwikkeling in Suriname.',
+  positioning:
+    'Stichting Probitas ontwikkelt, verbindt en ondersteunt innovatieve projecten op het gebied van onderwijs, technologie en duurzame ontwikkeling. Samen met gespecialiseerde partners realiseren wij programma’s die impact maken voor studenten, professionals en de samenleving.',
 } as const;
 
 export const pillars = [
@@ -13,40 +15,114 @@ export const pillars = [
   { label: 'Impact', accent: 'purple' },
 ] as const;
 
+export const programDetails = [
+  {
+    slug: 'innoved',
+    title: 'InnovED',
+    accent: 'blue',
+    icon: 'RiComputerLine',
+    summary:
+      'Digitale geletterdheid, AI en professionalisering voor studenten en professionals.',
+    intro:
+      'Hier komen alle opleidingen en trainingen op het gebied van digitale vaardigheden, kunstmatige intelligentie en professionele ontwikkeling samen — van basisvaardigheden tot bedrijfstrainingen op maat.',
+    topics: [
+      'Digitale geletterdheid',
+      'Microsoft Office',
+      'AI',
+      'Docentprofessionalisering',
+      'Bedrijfstrainingen',
+      'Workshops',
+    ],
+  },
+  {
+    slug: 'world-smart-college',
+    title: 'World Smart College',
+    accent: 'purple',
+    icon: 'RiUserHeartLine',
+    summary:
+      'Arbeidsmarktgerichte opleidingen en persoonlijke ontwikkeling voor jongeren en vrouwen.',
+    intro:
+      'World Smart College richt zich op jongeren en vrouwen die willen groeien: via arbeidsmarktgerichte opleidingen, persoonlijke ontwikkeling en community-projecten die mensen dichter bij hun doelen brengen.',
+    topics: [
+      'Jongeren',
+      'Vrouwen',
+      'Arbeidsmarktgerichte opleidingen',
+      'Persoonlijke ontwikkeling',
+      'Community-projecten',
+    ],
+  },
+  {
+    slug: 'itlearn',
+    title: 'ITLearn',
+    accent: 'orange',
+    icon: 'RiServerLine',
+    summary:
+      'ICT-support, netwerkbeheer en consultancy voor bedrijven en instellingen.',
+    intro:
+      'ITLearn ondersteunt organisaties met technisch beheer en advies — van dagelijks computeronderhoud tot volledige servicecontracten en IT-consultancy op maat.',
+    topics: [
+      'Computeronderhoud',
+      'Netwerkbeheer',
+      'ICT-support',
+      'Hardware-upgrades',
+      'Consultancy',
+      'Servicecontracten',
+    ],
+  },
+  {
+    slug: 'probi-kas',
+    title: 'Probi-Kas',
+    accent: 'green',
+    icon: 'RiSeedlingLine',
+    summary:
+      'Agro-innovatie: slimme landbouw, aquaponics en klimaatslimme technieken.',
+    intro:
+      'De agro-innovatiepagina van Probitas: hier onderzoeken en demonstreren we klimaatslimme landbouwtechnieken, met studentenprojecten die de landbouw van morgen vormgeven.',
+    topics: [
+      'Innovatiekas',
+      'Aquaponics',
+      'Klimaatslimme landbouw',
+      'Paprikateelt',
+      'Onderzoek',
+      'Demonstraties',
+      'Studentenprojecten',
+    ],
+  },
+  {
+    slug: 'stem-innovation',
+    title: 'STEM & Innovatie',
+    accent: 'red',
+    icon: 'RiCpuLine',
+    summary:
+      'FabLab, robotica en digitale fabricage voor de makers van morgen.',
+    intro:
+      'In het FabLab van Probitas maken jongeren kennis met robotica, elektronica en digitale fabricage — een makerspace waar ideeën uitgroeien tot prototypes.',
+    topics: [
+      'FabLab',
+      'Robotica',
+      'Arduino',
+      '3D-printing',
+      'Makerspace',
+      'Digitale fabricage',
+    ],
+  },
+] as const;
+
 export const nav = {
   primary: [
-    { label: 'Home', href: '#home' },
-    { label: 'Projecten', href: '#nieuws' },
-    { label: 'Partners', href: '#impact' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', href: '/' },
+    { label: 'Over Probitas', href: '/about' },
+    { label: 'Projecten', href: '/projects' },
+    { label: 'Partners', href: '/partners' },
+    { label: 'Contact', href: '/contact' },
   ],
-  programs: [
-    {
-      title: 'InnovED',
-      description: 'Digitale geletterdheid, AI en trainingen',
-      href: '#programmas',
-    },
-    {
-      title: 'World Smart College',
-      description: 'Arbeidsmarktgerichte opleidingen',
-      href: '#programmas',
-    },
-    {
-      title: 'ITLearn',
-      description: 'ICT-support en netwerkbeheer',
-      href: '#programmas',
-    },
-    {
-      title: 'Probi-Kas',
-      description: 'Agro-innovatie en aquaponics',
-      href: '#programmas',
-    },
-    {
-      title: 'STEM & Innovatie',
-      description: 'FabLab, robotica en digitale fabricage',
-      href: '#programmas',
-    },
-  ],
+  programs: programDetails.map((program) => ({
+    title: program.title,
+    description: program.summary,
+    href: `/programs/${program.slug}`,
+    icon: program.icon,
+    accent: program.accent,
+  })),
 } as const;
 
 export const programs = [
@@ -56,7 +132,7 @@ export const programs = [
     description: 'Digitale vaardigheden voor vandaag en morgen.',
     icon: 'RiComputerLine',
     accent: 'blue',
-    href: '#programmas',
+    href: '/programs/innoved',
   },
   {
     key: 'probi-kas',
@@ -64,7 +140,7 @@ export const programs = [
     description: 'Slimme landbouw voor een duurzame toekomst.',
     icon: 'RiSeedlingLine',
     accent: 'green',
-    href: '#programmas',
+    href: '/programs/probi-kas',
   },
   {
     key: 'consultatie',
@@ -72,7 +148,7 @@ export const programs = [
     description: 'Samen bouwen aan kansen en een betere samenleving.',
     icon: 'RiTeamLine',
     accent: 'orange',
-    href: '#programmas',
+    href: '/partners',
   },
 ] as const;
 
@@ -115,16 +191,16 @@ export const news = [
     accent: 'blue',
     title: 'AI & ChatGPT Workshop voor jongeren',
     date: '15 mei 2025',
-    href: '#',
+    href: '/projects',
   },
   {
     key: 'stem-lab',
     image: '/images/news-stem-lab.png',
     category: 'STEM',
-    accent: 'purple',
+    accent: 'red',
     title: 'Nieuw STEM Lab in ontwikkeling',
     date: '8 mei 2025',
-    href: '#',
+    href: '/projects',
   },
   {
     key: 'peppers',
@@ -133,7 +209,7 @@ export const news = [
     accent: 'green',
     title: 'Eerste paprika oogst succesvol binnen!',
     date: '2 mei 2025',
-    href: '#',
+    href: '/projects',
   },
   {
     key: 'partnership',
@@ -142,22 +218,24 @@ export const news = [
     accent: 'orange',
     title: 'Nieuwe samenwerking met NATIN',
     date: '25 april 2025',
-    href: '#',
+    href: '/projects',
   },
 ] as const;
 
 export const footerLinks = [
-  { label: "Programma's", href: '#programmas' },
-  { label: 'Projecten', href: '#nieuws' },
-  { label: 'Word Partner', href: '#contact' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Over Probitas', href: '/about' },
+  { label: "Programma's", href: '/programs' },
+  { label: 'Projecten', href: '/projects' },
+  { label: 'Word Partner', href: '/contact' },
+  { label: 'Contact', href: '/contact' },
 ] as const;
 
+// No confirmed social profile URLs yet — point to Contact rather than invent handles.
 export const socials = [
-  { label: 'Facebook', icon: 'RiFacebookFill', href: '#' },
-  { label: 'Instagram', icon: 'RiInstagramLine', href: '#' },
-  { label: 'LinkedIn', icon: 'RiLinkedinFill', href: '#' },
-  { label: 'YouTube', icon: 'RiYoutubeFill', href: '#' },
+  { label: 'Facebook', icon: 'RiFacebookFill', href: '/contact' },
+  { label: 'Instagram', icon: 'RiInstagramLine', href: '/contact' },
+  { label: 'LinkedIn', icon: 'RiLinkedinFill', href: '/contact' },
+  { label: 'YouTube', icon: 'RiYoutubeFill', href: '/contact' },
 ] as const;
 
 export const contact = {

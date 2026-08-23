@@ -1,0 +1,39 @@
+---
+import { RiArrowRightLine } from '@remixicon/react';
+import { buttonVariants } from '@/components/ui/button';
+import { site } from '@/lib/site-data';
+import { cn } from '@/lib/utils';
+---
+
+<section class="py-20">
+  <div
+    class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2"
+  >
+    <div>
+      <h2
+        class="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
+      >
+        Over {site.shortName}
+      </h2>
+      <div class="mt-3 h-1 w-14 rounded-full bg-primary"></div>
+      <p class="mt-6 text-base text-muted-foreground sm:text-lg">
+        {site.positioning}
+      </p>
+      <a
+        href="/about"
+        class={cn(buttonVariants({ variant: 'default' }), 'mt-8 gap-1.5 rounded-full px-6')}
+      >
+        Meer over ons
+        <RiArrowRightLine />
+      </a>
+    </div>
+
+    <div class="overflow-hidden rounded-2xl">
+      <img
+        src="/brand/logo-black.png"
+        alt={`Studenten aan het werk bij een programma van ${site.name}`}
+        class="aspect-4/3 size-full object-contain"
+      >
+    </div>
+  </div>
+</section>

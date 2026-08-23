@@ -1,0 +1,44 @@
+---
+import PageHero from '@/components/layout/page-hero.astro';
+import SiteFooter from '@/components/layout/site-footer.astro';
+import SiteHeader from '@/components/layout/site-header.astro';
+import { ProgramCard } from '@/components/programs/program-card';
+import Layout from '@/layouts/main.astro';
+import { programDetails, site } from '@/lib/site-data';
+---
+
+<Layout title={`Programma's | ${site.name}`} description={site.positioning}>
+  <SiteHeader />
+  <main>
+    <PageHero
+      eyebrow="Programma's & partners"
+      title="Vijf programma's, één beweging"
+      description={site.positioning}
+    />
+
+    <section class="mx-auto max-w-3xl px-6 py-16 text-center">
+      <p class="text-base text-muted-foreground sm:text-lg">
+        Stichting Probitas is de verbindende organisatie &mdash; de hub.
+        InnovED, World Smart College, ITLearn, Probi-Kas en STEM &amp; Innovatie
+        zijn de gespecialiseerde programma&rsquo;s eromheen &mdash; de spokes.
+        Zo weet je altijd via welk programma je met ons samenwerkt.
+      </p>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-6 pb-24">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {programDetails.map((program) => (
+            <ProgramCard
+              title={program.title}
+              description={program.summary}
+              icon={program.icon}
+              accent={program.accent}
+              href={`/programs/${program.slug}`}
+              client:load
+            />
+          ))}
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Layout>

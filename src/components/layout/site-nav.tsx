@@ -1,4 +1,4 @@
-import { RiCloseLine, RiMenuLine } from '@remixicon/react';
+import { RiCloseLine, RiHandHeartLine, RiMenuLine } from '@remixicon/react';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -10,7 +10,10 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
+import { accentSoftBg, accentText } from '@/lib/accent';
+import { programIcons } from '@/lib/program-icons';
 import { nav } from '@/lib/site-data';
+import { cn } from '@/lib/utils';
 
 const linkClass =
   'px-3 py-2 text-sm font-medium text-white/90 transition-colors hover:text-white';
@@ -29,22 +32,40 @@ function DesktopNav() {
               Programma&apos;s
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid w-72 gap-1">
-                {nav.programs.map((program) => (
-                  <li key={program.title}>
-                    <NavigationMenuLink
-                      href={program.href}
-                      className="flex-col items-start gap-0.5"
-                    >
-                      <span className="font-heading text-sm font-medium">
-                        {program.title}
-                      </span>
-                      <span className="text-xs text-muted-foreground">
-                        {program.description}
-                      </span>
-                    </NavigationMenuLink>
-                  </li>
-                ))}
+              <ul className="grid w-80 gap-1">
+                {nav.programs.map((program) => {
+                  const Icon = programIcons[program.icon];
+                  return (
+                    <li key={program.title}>
+                      <NavigationMenuLink
+                        href={program.href}
+                        className="items-start gap-3"
+                      >
+                        <span
+                          className={cn(
+                            'flex size-9 shrink-0 items-center justify-center rounded-full',
+                            accentSoftBg[program.accent],
+                          )}
+                        >
+                          <Icon
+                            className={cn(
+                              'size-4.5',
+                              accentText[program.accent],
+                            )}
+                          />
+                        </span>
+                        <span className="flex flex-col gap-0.5">
+                          <span className="font-heading text-sm font-medium">
+                            {program.title}
+                          </span>
+                          <span className="text-xs text-muted-foreground">
+                            {program.description}
+                          </span>
+                        </span>
+                      </NavigationMenuLink>
+                    </li>
+                  );
+                })}
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
@@ -73,19 +94,27 @@ function MobileNav({ open, onClose }: { open: boolean; onClose: () => void }) {
         >
           {nav.primary[0].label}
         </a>
-        <div className="px-3 py-2 text-xs font-semibold tracking-wide text-white/50 uppercase">
-          Programma&apos;s
-        </div>
-        {nav.programs.map((program) => (
-          <a
-            key={program.title}
-            href={program.href}
-            onClick={onClose}
-            className="rounded-md px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/10"
-          >
-            {program.title}
-          </a>
-        ))}
+        {nav.programs.map((program) => {
+          const Icon = programIcons[program.icon];
+          return (
+            <a
+              key={program.title}
+              href={program.href}
+              onClick={onClose}
+              className="flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/10"
+            >
+              <span
+                className={cn(
+                  'flex size-7 shrink-0 items-center justify-center rounded-full',
+                  accentSoftBg[program.accent],
+                )}
+              >
+                <Icon className={cn('size-3.5', accentText[program.accent])} />
+              </span>
+              {program.title}
+            </a>
+          );
+        })}
         {nav.primary.slice(1).map((item) => (
           <a
             key={item.label}
@@ -97,12 +126,12 @@ function MobileNav({ open, onClose }: { open: boolean; onClose: () => void }) {
           </a>
         ))}
         <Button
-          // biome-ignore lint/a11y/useValidAnchor: renders as a real navigation link via Button's render prop
-          render={<a href="#contact" onClick={onClose} />}
+          render={<a href="/contact" onClick={onClose} />}
           nativeButton={false}
-          className="mt-2 rounded-full"
+          className="mt-2 gap-1.5 rounded-full"
         >
           Word Partner
+          <RiHandHeartLine />
         </Button>
       </div>
     </div>
@@ -118,11 +147,12 @@ export function SiteNav() {
 
       <div className="flex items-center gap-2">
         <Button
-          render={<a href="#contact" />}
+          render={<a href="/contact" />}
           nativeButton={false}
-          className="hidden rounded-full sm:inline-flex"
+          className="hidden gap-1.5 rounded-full sm:inline-flex"
         >
           Word Partner
+          <RiHandHeartLine />
         </Button>
         <button
           type="button"

@@ -1,0 +1,21 @@
+---
+import { ProgramCard } from '@/components/programs/program-card';
+import { programs } from '@/lib/site-data';
+---
+
+<section id="programs" class="bg-primary py-20">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {programs.map((program) => (
+          <ProgramCard
+            title={program.title}
+            description={program.description}
+            icon={program.icon}
+            accent={program.accent}
+            href={program.href}
+            client:load
+          />
+        ))}
+    </div>
+  </div>
+</section>

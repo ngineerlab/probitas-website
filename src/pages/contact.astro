@@ -1,0 +1,74 @@
+---
+import {
+  RiGlobalLine,
+  RiMailLine,
+  RiMapPin2Line,
+  RiPhoneLine,
+} from '@remixicon/react';
+import { ContactForm } from '@/components/contact/contact-form';
+import PageHero from '@/components/layout/page-hero.astro';
+import SiteFooter from '@/components/layout/site-footer.astro';
+import SiteHeader from '@/components/layout/site-header.astro';
+import Layout from '@/layouts/main.astro';
+import { contact, site } from '@/lib/site-data';
+---
+
+<Layout
+  title={`Contact | ${site.name}`}
+  description="Neem contact op met Stichting Probitas of word partner."
+>
+  <SiteHeader />
+  <main>
+    <PageHero
+      eyebrow="Contact"
+      title="Laten we samenwerken"
+      description="Vragen over onze programma's, een partnerschap of iets anders? We horen graag van je."
+    />
+
+    <section class="mx-auto max-w-6xl px-6 py-20">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.3fr]">
+        <div class="space-y-6">
+          <ul class="space-y-5 text-sm">
+            <li class="flex items-start gap-3">
+              <span
+                class="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent"
+              >
+                <RiMapPin2Line className="size-5 text-accent-foreground" />
+              </span>
+              <span class="pt-2 text-foreground"
+                >{contact.address.join(', ')}</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <span
+                class="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent"
+              >
+                <RiPhoneLine className="size-5 text-accent-foreground" />
+              </span>
+              <span class="pt-2 text-foreground">{contact.phone}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span
+                class="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent"
+              >
+                <RiMailLine className="size-5 text-accent-foreground" />
+              </span>
+              <span class="pt-2 text-foreground">{contact.email}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span
+                class="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent"
+              >
+                <RiGlobalLine className="size-5 text-accent-foreground" />
+              </span>
+              <span class="pt-2 text-foreground">{contact.website}</span>
+            </li>
+          </ul>
+        </div>
+
+        <ContactForm email={contact.email} client:load />
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Layout>

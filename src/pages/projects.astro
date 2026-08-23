@@ -1,0 +1,47 @@
+---
+import PageHero from '@/components/layout/page-hero.astro';
+import SiteFooter from '@/components/layout/site-footer.astro';
+import SiteHeader from '@/components/layout/site-header.astro';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
+import Layout from '@/layouts/main.astro';
+import { accentBg } from '@/lib/accent';
+import { news, site } from '@/lib/site-data';
+import { cn } from '@/lib/utils';
+---
+
+<Layout
+  title={`Projecten | ${site.name}`}
+  description="De laatste projecten en ontwikkelingen van Stichting Probitas."
+>
+  <SiteHeader />
+  <main>
+    <PageHero
+      eyebrow="Projecten"
+      title="Waar we op dit moment aan werken"
+      description="Een overzicht van recente trainingen, innovaties en samenwerkingen vanuit onze programma's."
+    />
+
+    <section class="mx-auto max-w-7xl px-6 py-20">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {news.map((item) => (
+            <Card className="gap-0 overflow-hidden p-0">
+              <div class="relative aspect-4/3 overflow-hidden">
+                <img src={item.image} alt={item.title} class="size-full object-cover" />
+                <Badge className={cn('absolute top-3 left-3 rounded-full border-0 uppercase text-white', accentBg[item.accent])}>
+                  {item.category}
+                </Badge>
+              </div>
+              <CardContent className="gap-1.5 pt-4 pb-5">
+                <h3 class="font-heading text-base leading-snug font-semibold text-foreground">
+                  {item.title}
+                </h3>
+                <p class="text-xs text-muted-foreground">{item.date}</p>
+              </CardContent>
+            </Card>
+          ))}
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Layout>

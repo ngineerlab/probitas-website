@@ -1,7 +1,8 @@
 ---
-import { RiArrowRightLine } from '@remixicon/react';
-import { Button } from '@/components/ui/button';
+import { RiArrowRightLine, RiHandHeartLine } from '@remixicon/react';
+import { buttonVariants } from '@/components/ui/button';
 import { site } from '@/lib/site-data';
+import { cn } from '@/lib/utils';
 ---
 
 <section id="home" class="relative isolate overflow-hidden bg-navy">
@@ -34,18 +35,23 @@ import { site } from '@/lib/site-data';
       </p>
 
       <div class="mt-9 flex flex-wrap items-center gap-4">
-        <Button size="lg" className="rounded-full px-6" client:load>
+        <a
+          href="/projects"
+          class={cn(buttonVariants({ size: 'lg' }), 'gap-1.5 rounded-full px-6')}
+        >
           Ontdek onze projecten
           <RiArrowRightLine />
-        </Button>
-        <Button
-          size="lg"
-          variant="outline"
-          className="rounded-full border-white/40 bg-transparent px-6 text-white hover:bg-white/10 hover:text-white"
-          client:load
+        </a>
+        <a
+          href="/contact"
+          class={cn(
+            buttonVariants({ size: 'lg', variant: 'outline' }),
+            'gap-1.5 rounded-full border-white/40 bg-transparent px-6 text-white hover:bg-white/10 hover:text-white',
+          )}
         >
           Word Partner
-        </Button>
+          <RiHandHeartLine />
+        </a>
       </div>
     </div>
 

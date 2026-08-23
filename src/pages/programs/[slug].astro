@@ -1,0 +1,130 @@
+---
+import { RiArrowRightLine, RiChat3Line, RiCheckLine } from '@remixicon/react';
+import PageHero from '@/components/layout/page-hero.astro';
+import SiteFooter from '@/components/layout/site-footer.astro';
+import SiteHeader from '@/components/layout/site-header.astro';
+import { buttonVariants } from '@/components/ui/button';
+import Layout from '@/layouts/main.astro';
+import { accentSoftBg, accentText } from '@/lib/accent';
+import { programIcons } from '@/lib/program-icons';
+import { programDetails, site } from '@/lib/site-data';
+import { cn } from '@/lib/utils';
+
+export function getStaticPaths() {
+  return programDetails.map((program) => ({
+    params: { slug: program.slug },
+    props: { program },
+  }));
+}
+
+const { program } = Astro.props;
+const Icon = programIcons[program.icon];
+const otherPrograms = programDetails.filter(
+  (item) => item.slug !== program.slug,
+);
+---
+
+<Layout title={`${program.title} | ${site.name}`} description={program.summary}>
+  <SiteHeader />
+  <main>
+    <PageHero eyebrow="Programma" title={program.title} accent={program.accent}>
+      <div
+        class={cn('mx-auto mt-6 flex size-16 items-center justify-center rounded-2xl', accentSoftBg[program.accent])}
+      >
+        <Icon className={cn('size-8', accentText[program.accent])} />
+      </div>
+    </PageHero>
+
+    <section class="mx-auto max-w-3xl px-6 py-16">
+      <p class="text-center text-lg text-foreground sm:text-xl">
+        {program.intro}
+      </p>
+    </section>
+
+    <section class="bg-secondary py-16">
+      <div class="mx-auto max-w-4xl px-6">
+        <h2
+          class="text-center font-heading text-2xl font-bold text-foreground sm:text-3xl"
+        >
+          Waar {program.title} zich mee bezighoudt
+        </h2>
+        <ul class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {program.topics.map((topic) => (
+              <li class="flex items-center gap-3 rounded-xl bg-card p-4 shadow-xs ring-1 ring-foreground/10">
+                <span
+                  class={cn('flex size-8 shrink-0 items-center justify-center rounded-full', accentSoftBg[program.accent])}
+                >
+                  <RiCheckLine className={cn('size-4', accentText[program.accent])} />
+                </span>
+                <span class="font-medium text-foreground">{topic}</span>
+              </li>
+            ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-6xl px-6 py-16">
+      <div
+        class="relative overflow-hidden rounded-3xl bg-primary px-8 py-12 text-center sm:px-16 sm:py-16"
+      >
+        <div
+          class="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(255,255,255,0.12),transparent_55%)]"
+        ></div>
+
+        <div class="relative">
+          <div
+            class="mx-auto flex size-14 items-center justify-center rounded-2xl bg-navy shadow-lg"
+          >
+            <RiChat3Line className="size-7 text-white" />
+          </div>
+          <h2
+            class="mt-6 font-heading text-3xl font-bold text-primary-foreground sm:text-4xl"
+          >
+            Interesse om samen te werken?
+          </h2>
+          <p
+            class="mx-auto mt-4 max-w-xl text-base text-primary-foreground/80 sm:text-lg"
+          >
+            Neem contact op met Stichting Probitas om te bespreken hoe we samen
+            impact kunnen maken.
+          </p>
+
+          <div class="mt-9 flex justify-center">
+            <a
+              href="/contact"
+              class={cn(buttonVariants({ variant: 'secondary', size: 'lg' }), 'gap-1.5 rounded-full px-8')}
+            >
+              Neem contact op
+              <RiArrowRightLine />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-6 pb-24">
+      <h2 class="mb-8 font-heading text-xl font-semibold text-foreground">
+        Andere programma&rsquo;s
+      </h2>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {otherPrograms.map((item) => {
+            const OtherIcon = programIcons[item.icon];
+            return (
+              <a
+                href={`/programs/${item.slug}`}
+                class="group flex items-center gap-3 rounded-xl border border-border p-4 transition-colors hover:border-foreground/20 hover:bg-muted"
+              >
+                <span
+                  class={cn('flex size-10 shrink-0 items-center justify-center rounded-full', accentSoftBg[item.accent])}
+                >
+                  <OtherIcon className={cn('size-5', accentText[item.accent])} />
+                </span>
+                <span class="font-heading text-sm font-medium text-foreground">{item.title}</span>
+              </a>
+            );
+          })}
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Layout>

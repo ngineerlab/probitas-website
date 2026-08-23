@@ -1,9 +1,4 @@
-import {
-  RiArrowRightLine,
-  RiComputerLine,
-  RiSeedlingLine,
-  RiTeamLine,
-} from '@remixicon/react';
+import { RiArrowRightLine } from '@remixicon/react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -15,18 +10,13 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { type Accent, accentGradient, accentText } from '@/lib/accent';
+import { type ProgramIconKey, programIcons } from '@/lib/program-icons';
 import { cn } from '@/lib/utils';
-
-const icons = {
-  RiComputerLine,
-  RiSeedlingLine,
-  RiTeamLine,
-} as const;
 
 interface ProgramCardProps {
   title: string;
   description: string;
-  icon: keyof typeof icons;
+  icon: ProgramIconKey;
   accent: Accent;
   href: string;
 }
@@ -38,7 +28,7 @@ export function ProgramCard({
   accent,
   href,
 }: ProgramCardProps) {
-  const Icon = icons[icon];
+  const Icon = programIcons[icon];
 
   return (
     <Card className="p-0 transition-shadow hover:shadow-md">
